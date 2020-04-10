@@ -16,12 +16,12 @@ const calculateFactor = (data) => {
 
 
 const getCurrentlyAffected = (data) => {
-  const impactEffect = data.reportedCases * 10;
-  const severeEffect = data.reportedCases * 50;
+  const impactEffect = Math.floor(data.reportedCases * 10);
+  const severeEffect = Math.floor(data.reportedCases * 50);
   impact.currentlyInfected = impactEffect;
   severeImpact.currentlyInfected = severeEffect;
-  impact.infectionsByRequestedTime = Math.floor(impactEffect * (2 ** calculateFactor(data)));
-  severeImpact.infectionsByRequestedTime = Math.floor(severeEffect * (2 ** calculateFactor(data)));
+  impact.infectionsByRequestedTime = impactEffect * (2 ** calculateFactor(data));
+  severeImpact.infectionsByRequestedTime = severeEffect * (2 ** calculateFactor(data));
   return { impact, severeImpact };
 };
 
