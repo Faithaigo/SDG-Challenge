@@ -13,6 +13,8 @@ const calculateFactor = (data) => {
   }
   return Math.floor((data.timeToElapse * numberOfDaysInAmonth) / daysToDouble);
 };
+
+
 const getCurrentlyAffected = (data) => {
   const impactEffect = data.reportedCases * 10;
   const severeEffect = data.reportedCases * 50;
@@ -23,8 +25,19 @@ const getCurrentlyAffected = (data) => {
   return { impact, severeImpact };
 };
 
+const getHospitalBedsByRequestedTime = (data) => {
+  const impactSevereCases = 0.15 * impact.infectionsByRequestedTime;
+  const severeImpactSevereCases = 0.15 * severeImpact.infectionsByRequestedTime;
+  impact.severeCasesByRequestedTime = impactSevereCases;
+  severeImpact.severeCasesByRequestedTime = severeImpactSevereCases;
+  const availableBeds = 0.35 * data.totalHospitalBeds;
+  impact.hospitalBedsByRequestedTime = availableBeds - impactSevereCases;
+  severeImpact.hospitalBedsByRequestedTime = availableBeds - severeImpactSevereCases;
+};
+
 const covid19ImpactEstimator = (data) => {
   getCurrentlyAffected(data);
+  getHospitalBedsByRequestedTime(data);
   return { data, impact, severeImpact };
 };
 
