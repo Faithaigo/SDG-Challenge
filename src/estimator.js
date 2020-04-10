@@ -1,7 +1,7 @@
 const impact = {};
 const severeImpact = {};
 
-const calculateFactor = (data) =>{
+const calculateFactor = (data) => {
   const daysToDouble = 3;
   const numberOfDaysInAweek = 7;
   const numberOfDaysInAmonth = 30;
@@ -11,9 +11,7 @@ const calculateFactor = (data) =>{
   if (data.periodType === 'weeks') {
     return Math.floor((data.timeToElapse * numberOfDaysInAweek) / daysToDouble);
   }
-  else {
-    return Math.floor((data.timeToElapse * numberOfDaysInAmonth) / daysToDouble);
-  }
+  return Math.floor((data.timeToElapse * numberOfDaysInAmonth) / daysToDouble);
 };
 const getCurrentlyAffected = (data) => {
   const impactEffect = data.reportedCases * 10;
