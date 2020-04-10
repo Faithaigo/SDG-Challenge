@@ -30,7 +30,7 @@ const getHospitalBedsByRequestedTime = (data) => {
   const severeImpactSevereCases = Math.floor(0.15 * severeImpact.infectionsByRequestedTime);
   impact.severeCasesByRequestedTime = impactSevereCases;
   severeImpact.severeCasesByRequestedTime = severeImpactSevereCases;
-  const availableBeds = 0.35 * data.totalHospitalBeds;
+  const availableBeds = Math.floor(0.35 * data.totalHospitalBeds);
   impact.hospitalBedsByRequestedTime = availableBeds - impactSevereCases;
   severeImpact.hospitalBedsByRequestedTime = availableBeds - severeImpactSevereCases;
 };
