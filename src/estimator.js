@@ -39,20 +39,24 @@ const getHospitalBedsByRequestedTime = (data) => {
 
 const calculatePeriod = (data) => {
   if (data.periodType === 'days') {
-    return Math.trunc(data.timeToElapse);
+    return data.timeToElapse;
   }
   if (data.periodType === 'weeks') {
-    return Math.trunc(data.timeToElapse * numberOfDaysInAweek);
+    return data.timeToElapse * numberOfDaysInAweek;
   }
-  return Math.trunc(data.timeToElapse * numberOfDaysInAmonth);
+  return data.timeToElapse * numberOfDaysInAmonth;
 };
 
 
 const calculateDollarsInFlight = (data) => {
-  impact.casesForICUByRequestedTime = 0.05 * impact.infectionsByRequestedTime;
-  severeImpact.casesForICUByRequestedTime = 0.05 * severeImpact.infectionsByRequestedTime;
-  impact.casesForVentilatorsByRequestedTime = 0.02 * impact.infectionsByRequestedTime;
-  severeImpact.casesForVentilatorsByRequestedTime = 0.02 * severeImpact.infectionsByRequestedTime;
+  impact.casesForICUByRequestedTime = Math.trunc(0.05 * impact.infectionsByRequestedTime);
+  severeImpact.casesForICUByRequestedTime = Math.trunc(
+    0.05 * severeImpact.infectionsByRequestedTime
+  );
+  impact.casesForVentilatorsByRequestedTime = Math.trunc(0.02 * impact.infectionsByRequestedTime);
+  severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(
+    0.02 * severeImpact.infectionsByRequestedTime
+  );
   impact.dollarsInFlight = Math.trunc((impact.infectionsByRequestedTime
     * data.region.avgDailyIncomePopulation
     * data.region.avgDailyIncomeInUSD) / calculatePeriod(data));
