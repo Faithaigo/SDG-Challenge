@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estimation Form</title>
+    <style>
+        .estimation-form{
+            width: 500px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 3% auto;
+            border-radius:4px;
+        }
+        .form-group{
+            padding: 15px;
+        }
+        input[type="text"], select{
+            width: 100%;
+            padding: 10px 15px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .submit-btn{
+            padding: 0 15px;
+        }
+        button {
+            width: 100%;
+            background-color: #037a4c;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: #067a52;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="estimation-form">
+        <form aria-label="Add estimator information">
+            <div class="form-group">
+                <label for="population">Population</label>
+                <input type="text" data-population>
+            </div>
+            <div class="form-group">
+                <label for="timetoelapse">Time To Elapse</label>
+                <input type="text" data-time-to-elapse>
+            </div>
+            <div class="form-group">
+                <label for="reportedcases">Reported Cases</label>
+                <input type="text" data-reported-cases>
+            </div>
+            <div class="form-group">
+                <label for="hospitalbeds">Hospital Beds</label>
+                <input type="text" data-total-hospital-beds>
+            </div>
+            <div class="form-group">
+                <label for="periodtype">Period Type</label>
+                <select data-period-type>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                </select>
+            </div>
+            <div class="submit-btn">
+            <button type="submit" data-go-estimate >Submit</button>
+            </div>
+        </form>
+    </div>
+<script src="src/captureValues.js"></script>
+</body>
+</html>
