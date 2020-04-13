@@ -9,9 +9,9 @@ const calculateFactor = (data) => {
     return Math.trunc((data.timeToElapse) / daysToDouble);
   }
   if (data.periodType === 'weeks') {
-    return Math.trunc(data.timeToElapse * numberOfDaysInAweek) / daysToDouble;
+    return Math.trunc((data.timeToElapse * numberOfDaysInAweek) / daysToDouble);
   }
-  return Math.trunc(data.timeToElapse * numberOfDaysInAmonth) / daysToDouble;
+  return Math.trunc((data.timeToElapse * numberOfDaysInAmonth) / daysToDouble);
 };
 
 
