@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="Description" content="COVID-19 estimator" >
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width,  initial-scale=1.0, maximum-scale=5, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Estimation Form</title>
     <style>
@@ -49,23 +50,23 @@
         <form aria-label="Add estimator information">
             <div class="form-group">
                 <label for="population">Population</label>
-                <input type="text" data-population>
+                <input type="text" data-population id="population">
             </div>
             <div class="form-group">
                 <label for="timetoelapse">Time To Elapse</label>
-                <input type="text" data-time-to-elapse>
+                <input type="text" data-time-to-elapse  id="timetoelapse">
             </div>
             <div class="form-group">
                 <label for="reportedcases">Reported Cases</label>
-                <input type="text" data-reported-cases>
+                <input type="text" data-reported-cases id="reportedcases">
             </div>
             <div class="form-group">
                 <label for="hospitalbeds">Hospital Beds</label>
-                <input type="text" data-total-hospital-beds>
+                <input type="text" data-total-hospital-beds id="hospitalbeds">
             </div>
             <div class="form-group">
                 <label for="periodtype">Period Type</label>
-                <select data-period-type>
+                <select data-period-type id="periodtype">
                     <option value="days">Days</option>
                     <option value="weeks">Weeks</option>
                     <option value="months">Months</option>
@@ -76,6 +77,25 @@
             </div>
         </form>
     </div>
-<script src="src/captureValues.js"></script>
+    <script>
+      const population = document.querySelector('[data-population]');
+      const timeToElapse = document.querySelector('[data-time-to-elapse]');
+      const reportedCases = document.querySelector('[data-reported-cases]');
+      const totalHospitalBeds = document.querySelector('[data-total-hospital-beds]');
+      const periodType = document.querySelector('[data-period-type]');
+      const estimateButton = document.querySelector('[data-go-estimate]');
+
+      estimateButton.addEventListener('click', ($event) => {
+        $event.preventDefault();
+        const formData = {
+          population: +(population.value),
+          timeToElapse: +(timeToElapse.value),
+          reportedCases: +(reportedCases.value),
+          totalHospitalBeds: +(totalHospitalBeds.value),
+          periodType: periodType.value
+        };
+        console.log(formData)
+      });
+    </script>
 </body>
 </html>
