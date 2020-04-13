@@ -2,16 +2,16 @@ const impact = {};
 const severeImpact = {};
 
 const calculateFactor = (data) => {
-  const daysToDouble = 3;
-  const numberOfDaysInAweek = 7;
-  const numberOfDaysInAmonth = 30;
+  // const daysToDouble = 3;
+  // const numberOfDaysInAweek = 7;
+  // const numberOfDaysInAmonth = 30;
   if (data.periodType === 'days') {
-    return Math.trunc((data.timeToElapse) / daysToDouble);
+    return Math.trunc((data.timeToElapse) / 3);
   }
   if (data.periodType === 'weeks') {
-    return Math.trunc((data.timeToElapse * numberOfDaysInAweek) / daysToDouble);
+    return Math.trunc((data.timeToElapse * 7) / 3);
   }
-  return Math.trunc((data.timeToElapse * numberOfDaysInAmonth) / daysToDouble);
+  return Math.trunc((data.timeToElapse * 30) / 3);
 };
 
 
