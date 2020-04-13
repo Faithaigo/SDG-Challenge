@@ -20,8 +20,8 @@ const getCurrentlyAffected = (data) => {
   const severeEffect = data.reportedCases * 50;
   impact.currentlyInfected = impactEffect;
   severeImpact.currentlyInfected = severeEffect;
-  impact.infectionsByRequestedTime = impactEffect * (2 ** calculateFactor(data));
-  severeImpact.infectionsByRequestedTime = severeEffect * (2 ** calculateFactor(data));
+  impact.infectionsByRequestedTime = Math.trunc(impactEffect * (2 ** calculateFactor(data)));
+  severeImpact.infectionsByRequestedTime = Math.trunc(severeEffect * (2 ** calculateFactor(data)));
   return { impact, severeImpact };
 };
 
@@ -31,8 +31,8 @@ const getHospitalBedsByRequestedTime = (data) => {
   impact.severeCasesByRequestedTime = impactSevereCases;
   severeImpact.severeCasesByRequestedTime = severeImpactSevereCases;
   const availableBeds = Math.trunc(0.35 * data.totalHospitalBeds);
-  impact.hospitalBedsByRequestedTime = availableBeds - impactSevereCases;
-  severeImpact.hospitalBedsByRequestedTime = availableBeds - severeImpactSevereCases;
+  impact.hospitalBedsByRequestedTime = Math.trunc(availableBeds - impactSevereCases);
+  severeImpact.hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeImpactSevereCases);
 };
 
 const covid19ImpactEstimator = (data) => {
