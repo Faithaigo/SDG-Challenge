@@ -23,8 +23,8 @@ const getCurrentlyAffected = (data) => {
   severeImpact.currentlyInfected = severeEffect;
   impact.infectionsByRequestedTime = impactEffect * (2 ** calculateFactor(data));
   severeImpact.infectionsByRequestedTime = severeEffect * (2 ** calculateFactor(data));
-  return { impact, severeImpact };
 };
+
 
 const getHospitalBedsByRequestedTime = (data) => {
   const impactSevereCases = 0.15 * impact.infectionsByRequestedTime;
@@ -35,15 +35,19 @@ const getHospitalBedsByRequestedTime = (data) => {
   impact.hospitalBedsByRequestedTime = Math.trunc(availableBeds - impactSevereCases);
   severeImpact.hospitalBedsByRequestedTime = Math.trunc(availableBeds - severeImpactSevereCases);
 };
+
+
 const calculatePeriod = (data) => {
   if (data.periodType === 'days') {
-    return data.timeToElapse;
+    return Math.trunc(data.timeToElapse);
   }
   if (data.periodType === 'weeks') {
-    return data.timeToElapse * numberOfDaysInAweek;
+    return Math.trunc(data.timeToElapse * numberOfDaysInAweek);
   }
-  return data.timeToElapse * numberOfDaysInAmonth;
+  return Math.trunc(data.timeToElapse * numberOfDaysInAmonth);
 };
+
+
 const calculateDollarsInFlight = (data) => {
   impact.casesForICUByRequestedTime = 0.05 * impact.infectionsByRequestedTime;
   severeImpact.casesForICUByRequestedTime = 0.05 * severeImpact.infectionsByRequestedTime;
