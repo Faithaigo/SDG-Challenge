@@ -5,13 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Estimation Form</title>
     <style>
         .estimation-form{
-            width: 600px;
+            width: 500px;
             border: 1px solid #ccc;
             padding: 20px;
             margin: 3% auto;
+            border-radius:4px;
         }
         .form-group{
             padding: 15px;
@@ -45,25 +46,25 @@
 </head>
 <body>
     <div class="estimation-form">
-        <form>
+        <form aria-label="Add estimator information">
             <div class="form-group">
-                <label>Population</label>
-                <input type="text" data-population id="population">
+                <label for="population">Population</label>
+                <input type="text" data-population>
             </div>
             <div class="form-group">
-                <label>Time To Elapse</label>
+                <label for="timetoelapse">Time To Elapse</label>
                 <input type="text" data-time-to-elapse>
             </div>
             <div class="form-group">
-                <label>Reported Cases</label>
+                <label for="reportedcases">Reported Cases</label>
                 <input type="text" data-reported-cases>
             </div>
             <div class="form-group">
-                <label>Hospital Beds</label>
+                <label for="hospitalbeds">Hospital Beds</label>
                 <input type="text" data-total-hospital-beds>
             </div>
             <div class="form-group">
-                <label>Period Type</label>
+                <label for="periodtype">Period Type</label>
                 <select data-period-type>
                     <option value="days">Days</option>
                     <option value="weeks">Weeks</option>
@@ -75,6 +76,6 @@
             </div>
         </form>
     </div>
-<script src="captureValues.js"></script>
+<script src="src/captureValues.js"></script>
 </body>
 </html>
